@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бюджет Трекер</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <aside class="menu">
+            <h2>Меню</h2>
+            <ul>
+                <li><a href="#main">Главная</a></li>
+                <li><a href="#add-transaction">Добавить транзакцию</a></li>
+                <li><a href="#report">Отчет</a></li>
+                <li><a href="#charts">Графики</a></li>
+            </ul>
+        </aside>
+
+        <main id="main-content">
+            <h1>Бюджет Трекер</h1>
+
+            <!-- Баланс -->
+            <div class="balance">
+                <h2>Баланс: <span id="total-balance">$0</span></h2>
+                <p>Доход: <span id="total-income">$0</span></p>
+                <p>Расходы: <span id="total-expenses">$0</span></p>
+            </div>
+
+            <!-- Форма добавления транзакции -->
+            <section id="add-transaction">
+                <h2>Добавить транзакцию</h2>
+                <form id="transaction-form">
+                    <input type="text" id="description" placeholder="Описание" required>
+                    <input type="number" id="amount" placeholder="Сумма" required>
+                    <input type="text" id="category" placeholder="Категория" required>
+                    <button type="submit">Добавить</button>
+                </form>
+            </section>
+
+            <!-- Список транзакций -->
+            <section id="transaction-list-section">
+                <h2>Список транзакций</h2>
+                <select id="filter-category">
+                    <option value="">Все категории</option>
+                </select>
+                <div id="transaction-list"></div>
+            </section>
+
+            <!-- Отчет -->
+            <section id="report">
+                <h2>Отчет</h2>
+                <div id="monthly-report"></div>
+            </section>
+
+            <!-- Графики -->
+            <section id="charts">
+                <h2>График доходов и расходов</h2>
+                <canvas id="income-expense-chart"></canvas>
+            </section>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
