@@ -1,4 +1,3 @@
-// Доступ к DOM-элементам
 const form = document.getElementById('transaction-form');
 const descriptionInput = document.getElementById('description');
 const amountInput = document.getElementById('amount');
@@ -11,15 +10,12 @@ const totalExpensesElem = document.getElementById('total-expenses');
 const monthlyReportElem = document.getElementById('monthly-report');
 const incomeExpenseChartElem = document.getElementById('income-expense-chart');
 
-// Хранилище транзакций
 let transactions = JSON.parse(localStorage.getItem('transactions')) || [];
 
-// Функция сохранения транзакций
 function saveToLocalStorage() {
     localStorage.setItem('transactions', JSON.stringify(transactions));
 }
 
-// Удаление транзакции
 function deleteTransaction(index) {
     transactions.splice(index, 1);
     saveToLocalStorage();
@@ -27,7 +23,6 @@ function deleteTransaction(index) {
     createCharts();
 }
 
-// Обновление интерфейса
 function updateUI(filter = '') {
     const filteredTransactions = filter
         ? transactions.filter(t => t.category === filter)
@@ -54,7 +49,6 @@ function updateUI(filter = '') {
     totalExpensesElem.textContent = `$${expenses}`;
 }
 
-// Создание графиков
 function createCharts() {
     const income = transactions.filter(t => t.amount > 0).reduce((sum, t) => sum + t.amount, 0);
     const expenses = transactions.filter(t => t.amount < 0).reduce((sum, t) => sum + Math.abs(t.amount), 0);
@@ -73,7 +67,6 @@ function createCharts() {
     });
 }
 
-// Отправка формы
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     const description = descriptionInput.value;
